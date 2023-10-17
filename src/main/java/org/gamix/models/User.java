@@ -47,4 +47,18 @@ public class User {
     public void setPasswordUser(PasswordUser passwordUser) {
         this.passwordUser = passwordUser;
     }
+
+    public void partialUserInput(User partialUserInput) {
+        if (partialUserInput != null) {
+            if (partialUserInput.getUsername() != null) {
+                this.username = partialUserInput.getUsername();
+            }
+            if (partialUserInput.getEmail() != null) {
+                this.email = partialUserInput.getEmail();
+            }
+            if (partialUserInput.getIcon() != null) {
+                this.icon = partialUserInput.getIcon();
+            }
+        }
+    }
 }
