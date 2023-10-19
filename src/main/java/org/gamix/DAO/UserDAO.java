@@ -2,6 +2,8 @@ package org.gamix.DAO;
 
 import org.gamix.models.User;
 
+import java.util.Objects;
+
 public class UserDAO {
 
     private final User[] vector = new User[10];
@@ -61,5 +63,23 @@ public class UserDAO {
         }
     }
 
+    public void deleteAccount(Integer id) {
+        int indexToExclude = -1;
+
+        for (int i = 0; i < vector.length; i++) {
+            if (vector[i] != null && Objects.equals(vector[i].getId(), id)) {
+                indexToExclude = i;
+                break;
+            }
+        }
+
+        if (indexToExclude >= 0) {
+            for (int i = indexToExclude; i < vector.length; i++) {
+                vector[i] = vector[i + 1];
+            }
+
+            vector[vector.length - 1] = null;
+        }
+    }
 
 }
